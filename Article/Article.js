@@ -85,6 +85,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Buffalo Bills Win Super Bowl! Bills Fans Go Wild!',
+    date: 'Feb 28th, 2021',
+    firstParagraph: `Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                     Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                     Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!`,
+    secondParagraph: `Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                      Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                      Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!`,
+    thirdParagraph: `Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                     Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!
+                     Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win! Bills Win!`
   }
 ];
 
@@ -114,15 +127,15 @@ const data = [
 
 function articleMaker(article){
   // Article container element
-  const article = document.createElement('div');
-  article.classList.add('article');
+  const atcl = document.createElement('div');
+  atcl.classList.add('article');
 
   // Article title
   const title = document.createElement('h2');
   title.textContent = article.title;
 
   // Add the article title to the container
-  article.appendChild(title);
+  atcl.appendChild(title);
 
   // Article date
   const date = document.createElement('p');
@@ -130,14 +143,14 @@ function articleMaker(article){
   date.textContent = article.date;
 
   // Add the article date to the container
-  article.appendChild(date);
+  atcl.appendChild(date);
 
   // Create an array of article paragraphs
   const paragraphs = [];
 
   for(key in article){
     // If this is a paragraph value
-    if(key.contains('Paragraph')){
+    if(key.includes('Paragraph')){
       paragraphs.push(article[key]); // Add the item to the array
     }
   }
@@ -147,7 +160,7 @@ function articleMaker(article){
   paragraphs.forEach((p) => {
     const pgph = document.createElement('p');
 
-    article.appendChild(pgph);
+    atcl.appendChild(pgph);
   });
 
   // Expand/Collapse button
@@ -161,8 +174,18 @@ function articleMaker(article){
   });
 
   // Add the expand/collapse button to the container
-  article.appendChild(ecButton);
+  atcl.appendChild(ecButton);
 
-  return article;
+  return atcl;
 }
 
+// Articles container
+const articles = document.querySelector('.articles');
+
+// Loop over the data
+data.forEach((item) => {
+  // Create new article instance
+  let a = articleMaker(item);
+
+  articles.appendChild(a);
+});
