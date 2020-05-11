@@ -111,3 +111,58 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+function articleMaker(article){
+  // Article container element
+  const article = document.createElement('div');
+  article.classList.add('article');
+
+  // Article title
+  const title = document.createElement('h2');
+  title.textContent = article.title;
+
+  // Add the article title to the container
+  article.appendChild(title);
+
+  // Article date
+  const date = document.createElement('p');
+  date.classList.add('date');
+  date.textContent = article.date;
+
+  // Add the article date to the container
+  article.appendChild(date);
+
+  // Create an array of article paragraphs
+  const paragraphs = [];
+
+  for(key in article){
+    // If this is a paragraph value
+    if(key.contains('Paragraph')){
+      paragraphs.push(article[key]); // Add the item to the array
+    }
+  }
+
+  // Loop through the article paragraphs and create
+  // all of the article paragraphs
+  paragraphs.forEach((p) => {
+    const pgph = document.createElement('p');
+
+    article.appendChild(pgph);
+  });
+
+  // Expand/Collapse button
+  const ecButton = document.createElement('span');
+  ecButton.classList.add('expandButton');
+
+  ecButton.addEventListener('click', (e) => {
+    // Toggle the 'article-open' and 'article' classes
+    // on the article
+    article.classList.toggle('article-open');
+  });
+
+  // Add the expand/collapse button to the container
+  article.appendChild(ecButton);
+
+  return article;
+}
+
