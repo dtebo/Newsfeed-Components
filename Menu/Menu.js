@@ -54,4 +54,16 @@ function menuMaker(items){
   return menu;
 }
 
+// Header
+const header = document.querySelector('.header');
+
+// Generate menu
+const m = menuMaker(menuItems);
+
+header.appendChild(m);
+
 const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', (e) => {
+  m.classList.toggle('menu--open');
+});
