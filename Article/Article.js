@@ -158,7 +158,7 @@ function articleMaker(article){
   // Loop through the article paragraphs and create
   // all of the article paragraphs
   paragraphs.forEach((p) => {
-    const pgph = document.createElement('p');
+    let pgph = document.createElement('p');
     pgph.textContent = p;
 
     atcl.appendChild(pgph);
