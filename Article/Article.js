@@ -159,6 +159,7 @@ function articleMaker(article){
   // all of the article paragraphs
   paragraphs.forEach((p) => {
     const pgph = document.createElement('p');
+    pgph.textContent = p;
 
     atcl.appendChild(pgph);
   });
@@ -166,11 +167,16 @@ function articleMaker(article){
   // Expand/Collapse button
   const ecButton = document.createElement('span');
   ecButton.classList.add('expandButton');
+  ecButton.textContent = 'Expand';
 
   ecButton.addEventListener('click', (e) => {
     // Toggle the 'article-open' and 'article' classes
     // on the article
-    article.classList.toggle('article-open');
+    atcl.classList.toggle('article-open');
+    
+    let text = ecButton.textContent === 'Expand' ? 'Collapse' : 'Expand'; // Toggle button text
+
+    ecButton.textContent = text;
   });
 
   // Add the expand/collapse button to the container
