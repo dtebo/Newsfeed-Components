@@ -167,14 +167,14 @@ function articleMaker(article){
   // Expand/Collapse button
   const ecButton = document.createElement('span');
   ecButton.classList.add('expandButton');
-  ecButton.textContent = 'Expand';
+  ecButton.textContent = 'Click to Expand';
 
   ecButton.addEventListener('click', (e) => {
     // Toggle the 'article-open' and 'article' classes
     // on the article
     atcl.classList.toggle('article-open');
     
-    let text = ecButton.textContent === 'Expand' ? 'Collapse' : 'Expand'; // Toggle button text
+    let text = ecButton.textContent === 'Click to Expand' ? 'Click to Collapse' : 'Click to Expand'; // Toggle button text
 
     ecButton.textContent = text;
   });
