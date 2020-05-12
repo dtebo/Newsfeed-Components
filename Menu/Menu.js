@@ -78,7 +78,9 @@ clickArea.forEach((i) => {
   // if the element is not the menu
   if(!i.classList.contains('menu') && 
       !i.classList.contains('menu-button') &&
-      !i.classList.contains('header')){
+      !i.classList.contains('header') &&
+      !i.classList.contains('menu-list') &&
+      !i.classList.contains('menu-list-item')){
     // it is safe to close the menu when this element is clicked
     i.addEventListener('click', (e) => {
       m.classList.remove('menu--open');
