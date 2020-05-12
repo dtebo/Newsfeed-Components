@@ -36,17 +36,20 @@ function menuMaker(items){
   // Menu container
   const menu = document.createElement('div');
   menu.classList.add('menu');
+  menu.classList.add('non-close');
 
   // Menu item list
   const list = document.createElement('ul');
   list.classList.add('menu-list');
+  list.classList.add('non-close');
 
   // Create menu items
   items.forEach((item) => {
     let listItem = document.createElement('li');
     listItem.textContent = item;
     listItem.classList.add('menu-list-item');
-    
+    listItem.classList.add('non-close');
+
     list.appendChild(listItem);
   });
 
@@ -67,8 +70,6 @@ header.appendChild(m);
 const menuButton = document.querySelector('.menu-button');
 
 menuButton.addEventListener('click', (e) => {
-  // e.stopPropagation();
-
   m.classList.toggle('menu--open');
 });
 
@@ -76,11 +77,7 @@ const clickArea = document.querySelectorAll('body *');
 
 clickArea.forEach((i) => {
   // if the element is not the menu
-  if(!i.classList.contains('menu') && 
-      !i.classList.contains('menu-button') &&
-      !i.classList.contains('header') &&
-      !i.classList.contains('menu-list') &&
-      !i.classList.contains('menu-list-item')){
+  if(!i.classList.contains('non-close')){
     // it is safe to close the menu when this element is clicked
     i.addEventListener('click', (e) => {
       m.classList.remove('menu--open');
